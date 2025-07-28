@@ -1,3 +1,6 @@
+Its frontend link : https://github.com/aman22b1531183/video-progress-frontend
+
+
 Video Progress Tracking Application
 This project is a full-stack application designed to track user progress in educational videos. It features user authentication, video Browse, and granular progress tracking, allowing users to resume videos exactly where they left off.
 
