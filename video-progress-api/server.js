@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose'); // Add mongoose
+const mongoose = require('mongoose');
 
 // Load environment variables
 dotenv.config();
@@ -9,8 +9,11 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middleware (CORS setup)
+app.use(cors({
+  origin: '*', 
+  credentials: true
+}));
 app.use(express.json());
 
 // Import routes
@@ -44,10 +47,7 @@ const startServer = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
-      // Remove useCreateIndex and useFindAndModify as they are no longer supported
-      // useCreateIndex: true,
-      // useFindAndModify: false
+      useUnifiedTopology: true
     });
     console.log('MongoDB connection has been established successfully.');
 
@@ -62,4 +62,4 @@ const startServer = async () => {
 
 startServer();
 
-module.exports = app; // For testing purposes
+module.exports = app; 
